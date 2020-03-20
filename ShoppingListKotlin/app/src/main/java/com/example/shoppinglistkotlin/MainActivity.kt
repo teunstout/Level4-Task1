@@ -1,39 +1,47 @@
 package com.example.shoppinglistkotlin
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.LinearLayout
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.content_main.*
+import kotlinx.android.synthetic.main.item_layout.*
 
 class MainActivity : AppCompatActivity() {
+    var items = arrayListOf<Item>()
+    var itemAdapter = ItemAdapter(items)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
-        }
+        items.add(Item("Test", 4))
+        fab.setOnClickListener {addItem()}
+
+        initView()
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.menu_main, menu)
-        return true
+    private fun initView() {
+        rvItems.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL ,false)
+        rvItems.adapter = itemAdapter
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        return when (item.itemId) {
-            R.id.action_settings -> true
-            else -> super.onOptionsItemSelected(item)
-        }
+    private fun addItem() {
+        val newItem = Item(inWhatToBuy.text.toString(), inHowMany.text.toString().toFloat())
+        items.add(newItem)
+        inHowMany.text?.clear()
+        inWhatToBuy.text?.clear()
+        itemAdapter.notifyDataSetChanged()
     }
+
+
+
 }
