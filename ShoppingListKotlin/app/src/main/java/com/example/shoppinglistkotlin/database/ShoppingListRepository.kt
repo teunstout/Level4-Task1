@@ -1,7 +1,7 @@
-package com.example.shoppinglistkotlin.Database
+package com.example.shoppinglistkotlin.database
 
 import android.content.Context
-import com.example.shoppinglistkotlin.Item
+import com.example.shoppinglistkotlin.model.Item
 
 class ShoppingListRepository(context: Context) {
 

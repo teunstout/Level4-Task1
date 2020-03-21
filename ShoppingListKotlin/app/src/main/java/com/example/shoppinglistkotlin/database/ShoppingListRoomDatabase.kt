@@ -1,10 +1,10 @@
-package com.example.shoppinglistkotlin.Database
+package com.example.shoppinglistkotlin.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.shoppinglistkotlin.Item
+import com.example.shoppinglistkotlin.model.Item
 
 @Database(entities = [Item::class], version = 1, exportSchema = false)
 abstract class ShoppingListRoomDatabase : RoomDatabase() {

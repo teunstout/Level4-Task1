@@ -1,4 +1,4 @@
-package com.example.shoppinglistkotlin
+package com.example.shoppinglistkotlin.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

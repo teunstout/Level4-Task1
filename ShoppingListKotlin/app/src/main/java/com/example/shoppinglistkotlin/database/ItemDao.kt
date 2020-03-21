@@ -1,7 +1,7 @@
-package com.example.shoppinglistkotlin.Database
+package com.example.shoppinglistkotlin.database
 
 import androidx.room.*
-import com.example.shoppinglistkotlin.Item
+import com.example.shoppinglistkotlin.model.Item
 
 @Dao
 interface ItemDao {
