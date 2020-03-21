@@ -3,9 +3,9 @@ package com.example.shoppinglistkotlin.Database
 import android.content.Context
 import com.example.shoppinglistkotlin.Item
 
-class ShoppingListRoomRepository(context: Context) {
+class ShoppingListRepository(context: Context) {
 
-    private val itemDao: ItemDao
+    private var itemDao: ItemDao
 
     init {
         val database = ShoppingListRoomDatabase.getDatabase(context)
