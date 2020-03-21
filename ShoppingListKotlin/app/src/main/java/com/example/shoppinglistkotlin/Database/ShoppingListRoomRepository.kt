@@ -4,9 +4,13 @@ import android.content.Context
 import com.example.shoppinglistkotlin.Item
 
 class ShoppingListRoomRepository(context: Context) {
-    // init de itemDao
-    private val itemDao: ItemDao  =
-        ShoppingListRoomDatabase.getDatabase(context)!!.productDao()
+
+    private val itemDao: ItemDao
+
+    init {
+        val database = ShoppingListRoomDatabase.getDatabase(context)
+        itemDao = database!!.itemDao()
+    }
 
     suspend fun getAllProducts(): List<Item> = itemDao.getAllItems()
 
