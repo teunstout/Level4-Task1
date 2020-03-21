@@ -24,18 +24,18 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         items.add(Item("Test", 4))
-        fab.setOnClickListener {addItem()}
 
+        fab.setOnClickListener {addItem()}
         initView()
     }
 
     private fun initView() {
-        rvItems.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL ,false)
+        rvItems.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL ,false)
         rvItems.adapter = itemAdapter
     }
 
     private fun addItem() {
-        val newItem = Item(inWhatToBuy.text.toString(), inHowMany.text.toString().toFloat())
+        val newItem = Item(inWhatToBuy.text.toString(), inHowMany.text.toString().toInt())
         items.add(newItem)
         inHowMany.text?.clear()
         inWhatToBuy.text?.clear()

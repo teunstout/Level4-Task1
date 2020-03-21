@@ -9,7 +9,8 @@ import kotlinx.android.synthetic.main.item_layout.view.*
 class ItemAdapter(val items: List<Item>): RecyclerView.Adapter<ItemAdapter.ViewHolder>() {
     inner class ViewHolder(textView: View): RecyclerView.ViewHolder(textView) {
         fun bind(item: Item){
-            itemView.rvItemText.text = String.format("%d. %s", item.howMany, item.item)
+            val formatString = "${item.howMany}  ${item.item}"
+            itemView.rvItemText.text = formatString
         }
     }
 
