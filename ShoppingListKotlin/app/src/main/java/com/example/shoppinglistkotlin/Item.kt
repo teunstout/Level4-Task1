@@ -9,7 +9,7 @@ data class Item(
     @ColumnInfo(name = "item")
     val item: String,
     @ColumnInfo(name = "quantity")
-    val howMany: Number,
+    val howMany: Int,
 
     // zet hem niet boven aan dan moet je 3 values invoeren
     @PrimaryKey(autoGenerate = true)
