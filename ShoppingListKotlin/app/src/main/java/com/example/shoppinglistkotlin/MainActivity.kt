@@ -9,21 +9,27 @@ import android.view.MenuItem
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.shoppinglistkotlin.Database.ShoppingListRoomRepository
 
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 import kotlinx.android.synthetic.main.item_layout.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class MainActivity : AppCompatActivity() {
     var items = arrayListOf<Item>()
     var itemAdapter = ItemAdapter(items)
+    private lateinit var itemRepository: ShoppingListRoomRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
-
-        items.add(Item("Test", 4))
+        itemRepository = ShoppingListRoomRepository(this)
+        getShoppingListFromDatabase()
 
         fab.setOnClickListener {addItem()}
         initView()
@@ -42,6 +48,15 @@ class MainActivity : AppCompatActivity() {
         itemAdapter.notifyDataSetChanged()
     }
 
-
+private fun getShoppingListFromDatabase(){
+    CoroutineScope(Dispatchers.Main).launch {
+        val items = withContext(Dispatchers.IO){
+            itemRepository.getAllProducts()
+        }
+        this@MainActivity.items.clear()
+        this@MainActivity.items.addAll(items)
+        this@MainActivity.itemAdapter.notifyDataSetChanged()
+    }
+}
 
 }
