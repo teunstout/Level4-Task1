@@ -4,4 +4,5 @@
     <string name="how_many">How many?</string>
     <string name="what_to_buy">What to buy?</string>
     <string name="fillInCorrectly">Please fill in the fields</string>
+    <string name="titleMenu">Delete Shopping List</string>
 </resources>

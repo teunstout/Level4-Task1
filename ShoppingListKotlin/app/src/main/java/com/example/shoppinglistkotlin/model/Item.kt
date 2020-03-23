@@ -11,7 +11,6 @@ data class Item(
     @ColumnInfo(name = "quantity")
     val howMany: Int,
 
-    // zet hem niet boven aan dan moet je 3 values invoeren
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     var id: Long? = null
