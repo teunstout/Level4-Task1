@@ -146,7 +146,9 @@ class MainActivity : AppCompatActivity() {
                 deleteShoppingList()
                 true
             }
+
             else -> super.onOptionsItemSelected(item)
         }
     }
+
 }
